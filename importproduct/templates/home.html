@@ -1,0 +1,833 @@
+{% extends "base.html" %} {% block content %} {% load static %} <head>
+    <script></script>
+  </head>
+  <div class="d-flex justify-content-center my-5">
+    <div class="row gx-2">
+      <div class="col-md-12">
+        <div class="card-group">
+          <div class="card mx-3 p-5">
+            <div class="card-content">
+              <img src="https://i.imgur.com/D89wpVy.jpg" alt="Card image cap" style="height: 20rem">
+              <div class="card-body">
+                <h4 class="card-title">Import single product from a shopify store </h4>
+                <div class="form-group">
+                  <label for="helpInputTop">Product Link</label>
+                  <small class="text-muted">
+                    <i>import one product form shopify store</i>
+                  </small>
+                  <input type="text" name="minput1" class="form-control" id="helpInputTop" value="" placeholder="https://www.example.com/products/product1">
+                </div>
+                <p class="card-text"></p>
+                <p class="card-text"></p>
+                <button type="button" id="mbtn1" class="btn btn-outline-primary block" > Import one product </button>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+                  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Vertically Centered </h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                          <i data-feather="x"></i>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="form-body">
+                          <div class="row">
+                            
+
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">product informations</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="OP-title">title</label>
+                                                <input type="text" id="OP-title" class="form-control" placeholder="Product title">
+                                            </div>
+                                            </div>
+                                            <div class="col-12">
+                                            <label for="OP-imgs">images</label>
+                                            <div id="OP-imgs" class="row"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <hr>
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">product description</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="editor-oneproduct"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                           
+
+
+
+
+                            
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">product variants and prices</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="OP-vrt"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">product tags</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <small class="text-muted">
+                                            <i>Use coma ',' to separate between tags</i>
+                                          </small>
+                        
+                                         <textarea class="form-control" id="OP-tags" rows="3"></textarea>
+
+                                    </div>
+
+
+                                    
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Product Collections</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="alert alert-light-info color-info"><i class="bi"></i> Choose Product Collections , Press below to Select !
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            
+                                            <select class="OP-colcts choices form-select"  id="OP-colcts" >
+                                                <option value="" selected disabled hidden>Select a Collection</option>
+
+                                            
+                                            </select>
+                                        </div>
+            
+    
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+                          <i class="bx bx-x d-block d-sm-none"></i>
+                          <span class="d-none d-sm-block">Close</span>
+                        </button>
+                        <button type="button" id="mbtnimportone" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                          <i class="bx bx-check d-block d-sm-none"></i>
+                          <span class="d-none d-sm-block">Import Product</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mx-3 p-5">
+            <div class="card-content">
+              <img src="https://i.imgur.com/LzBC9TA.png" alt="Card image cap" style="height: 20rem">
+              <div class="card-body">
+                <h4 class="card-title">Import multiple products from a shopify store</h4>
+                <div class="form-group">
+                  <label for="helpInputTop">Shopify Store Link</label>
+                  <small class="text-muted">
+                    <i>import multiple products form shopify store</i>
+                  </small>
+                  <input name="minput2" type="text" class="form-control" id="helpInputTop" value="" placeholder="https://www.example.com">
+                </div>
+                <p class="card-text"></p>
+                <p class="card-text"></p>
+                <button type="button" id='mbtn2' class="btn btn-outline-primary block" > Import multiple products </button>
+                <div class="modal fade text-left" name='modal1my' id="MPmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true"  data-bs-keyboard="false" data-bs-backdrop="static">
+                  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel1">products list</h5>
+                        <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+                          <i data-feather="x"></i>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+
+                        <div class="form-body">
+
+                            <div class="row">
+
+
+
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                      <div class="ccc"></div>
+                                    </div>
+                                    <div class="card-body">
+                                        <input type="text" class="form-control Psearch"  id="Psearch" placeholder="Search Product">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="form-check-input form-check-primary form-check-glow" name="customCheck" id="selectAllCheckbox">
+                                                    <label class="form-check-label" id='numselecto' for="selectAllCheckbox"><span>0</span> selected</label>
+                                                    
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <ul class="list-group" id="PR_Multi">
+
+                                            </ul>
+                                        
+            
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+                                
+                                </div>
+                        </div>
+                </div>
+                      <div class="modal-footer">
+
+                        <button type="button" class="btn closebutnimportmult" data-bs-dismiss="modal">
+                          <i class="bx bx-x d-block d-sm-none"></i>
+                          <span class="d-none d-sm-block">Close</span>
+                        </button>
+                        <button type="button" class="btn btn-primary ml-1" id="mbtnimportmulti">
+                          <i class="bx bx-check d-block d-sm-none"></i>
+                          <span class="d-none d-sm-block">Import Selected</span>
+                        </button>
+                        <div class="PProgress" style="display:none;">  <span class="importedpdt">0</span>/<span class="totalpdt">0</span> Products imported </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+
+
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> 
+  {% block javascript %} 
+  <script>
+    let progressinterval;
+    
+    $.ajaxSetup({
+        data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+    });
+    
+    $(document).ready(function() {
+      var quill = new Quill('#editor-oneproduct', {
+        theme: 'snow'
+      });
+      let clctChoices ;
+      
+
+      var products = [];
+      var collecto = [];
+      $('#mbtn1').on('click', function() {
+        thisbtn = $(this);
+        var link = $.trim($('input[name=minput1]').val());
+		if (link.length<=0)
+		{
+		Swal.fire(
+              'Error occurred!',
+              'Product Link is empty!',
+              'error'
+            )
+			return false
+		}
+        thisbtn.prop('disabled', true);
+        thisbtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading')
+		
+        $.get("json/", {
+          link: link
+        }, function(response) {
+         // console.log(response)
+          if(response.status != true)
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: response.msg
+            })
+            
+          }else{
+
+         // console.log(response);
+          response = response.data
+          var product = response.product.product;
+          products.push({id:product.id, data: product});
+          const delta = quill.clipboard.convert(product.body_html)
+          quill.setContents(delta, 'silent')
+          $('#OP-title').val(product.title);
+          $.each(product.images, function(i, v) {
+            $('#OP-imgs').append(`
+                              <div class="col-2">
+                                  <img class="w-100 op-imgs" src='${v.src}' data-id='${v.id}' data-main='${(v.id == product.image.id ? 'true' : 'false')}' />
+                              </div>`);
+          });
+
+          
+          $.each(product.variants, function(i, c) {
+            $('#OP-vrt').append(`
+            <li class="d-block me-2 mb-1 variant">
+                <div class="row col-6">
+                    <div class="form-check col">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox"
+                                class="form-check-input form-check-primary form-check-glow varnt" checked
+                                name="customCheck" id="customColorCheck${i}" data-sku="${c.sku}">
+                            <label class="form-check-label" for="customColorCheck${i}" data-id="${c.id}">${c.title}</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control form-control-sm price" data-id="${c.id}" name="v-price[]" value="${c.price}"  />
+                    </div>
+                </div>
+            </li>`);
+          });
+
+          $('#OP-tags').val(product.tags);
+
+          collecto=response.collections;
+          var coll = response.collections;
+          //console.log(coll)
+        $.each(coll, function(i, v) {
+            
+            $('#OP-colcts').append(`
+                                <option value="${v.id}" data-id="${v.id}">${v.title}</option>
+                            `);
+                            
+        });
+          clctChoices = new Choices($('.OP-colcts')[0],{
+                                                          delimiter: ",",
+                                                          editItems: true,
+                                                          maxItemCount: -1,
+                                                          removeItemButton: true,
+                                                      });
+
+
+          products[0].data.handle = 'blablablabla';
+           // console.log(products);
+            $('#exampleModalCenter').modal('show');
+            //thisbtn.prop('disabled', false);
+            //thisbtn.text('Import Product')
+
+          }                                        
+
+
+        }).always(function(){
+            thisbtn.prop('disabled', false);
+            thisbtn.text('Import Product');
+        });
+        
+        
+      });
+
+
+
+
+
+
+
+
+
+      $('#exampleModalCenter').on('hidden.bs.modal', function() {
+        
+        quill.setContents([{
+          insert: '\n'
+        }]);
+        clctChoices.clearChoices().destroy();
+
+        $('#OP-imgs').html("");
+        $('#OP-vrt').html("");
+        $('#OP-title').html("");
+        $('#OP-tags').html("");
+        $('#OP-colcts').html("");
+        products=[]
+      });
+
+      $('#mbtnimportmulti').on('click', function() {
+        $(".PProgress").show();
+        var thisbtn = $(this);
+        thisbtn.prop('disabled',true);
+        thisbtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> processing')
+        labelText = $("#numselecto").text()
+       // console.log(multiproducts,'ddlkhslkddslkdhsldkh')
+
+        $('.checkIT:checkbox:not(:checked)').each(function() {
+
+            var var_cont = $(this).closest('.row');
+            var p_id = var_cont.find('.P-img').data("id");
+            //console.log(p_id);
+            const result = multiproducts.filter(multiproducts => multiproducts.id !== p_id);
+            
+            multiproducts=result
+            
+            //$.each(multiproducts, function(i, v) {
+            //   if(v.id == p_id)
+            //   {
+            //    console.log(v.id,'found this one')
+            //    v.id = $.grep(v.id, function(e){ 
+            //        return e.id != p_id; 
+            //   });
+            //      }
+            //      console.log(multiproducts)
+            // })
+            // console.log(multiproducts)
+             
+ 
+
+        })
+        //console.log(multiproducts)
+
+       // console.log(data,'sssssssssssssssoo')
+      // console.log(multiproducts,'finally')
+
+        //console.log(multiproducts);
+
+
+        
+            
+
+
+        if (!progressinterval) {
+          progressinterval = setInterval(getprogress, 1000);
+        }
+        $.post("multi-product/", {
+            payload: JSON.stringify(multiproducts),
+           }, function(resp) {
+
+            //console.log(resp)
+           // $('.ccc').html("<div class='alert alert-success' role='alert'> This is a success alert—check it out!</div>")
+           if(resp.status == true)
+           {
+            Swal.fire(
+              'Good job!',
+              resp.msg,
+              'success'
+            )
+           }else
+           {
+            
+            Swal.fire(
+              'Error occurred!',
+              resp.msg,
+              'error'
+            )
+           }
+           
+
+          },"json").always(function(){
+            clearInterval(progressinterval);
+            progressinterval = false;
+            thisbtn.prop('disabled', false);
+            thisbtn.text('Import Selected');
+        });
+
+          return false;
+
+
+          
+   })
+
+      $('#mbtnimportone').on('click', function() {
+
+        var selectcollet=0
+        products[0].data.title = $('#OP-title').val();
+        products[0].data.body_html = quill.container.innerHTML
+        products[0].data.tags = $('#OP-tags').val();
+        selectcollet=$('#OP-colcts').find('option:selected').val()
+       // console.log(selectcollet,'dddddddddd')
+
+// Collections
+       //var colitems = [];
+       //$('#OP-colcts option:selected').each(function(){ colitems.push($(this).val()); });
+       //var result = colitems.join(', ');
+       //console.log(result)
+       //console.log(collecto,"sssssssddddddddddddddd")
+       //$.each(result.split(', '),function(i, v) {
+       //    console.log(v)
+       //    $.each(collecto,function(j, w){
+       //        if (w.title==v){ products[0].data.variants = $.grep(products[0].data.variants, function(e){ 
+       //                return e.id != v_id;  }
+
+       //        
+       //    })
+       //    
+       //    
+
+
+
+       //})
+       //console.log(colitems,"11111111111111")
+
+
+        $('.varnt:checkbox:not(:checked)').each(function() {
+            var var_cont = $(this).closest('.variant');
+           // console.log(var_cont.find('label').text());
+            var v_id = var_cont.find('label').data("id");
+           // console.log(v_id);
+
+
+            $.each(products[0].data.variants, function(i, v) {
+                
+                if(v.id == v_id)
+                {
+                    products[0].data.variants = $.grep(products[0].data.variants, function(e){ 
+                        return e.id != v_id; 
+                        
+                   });
+        
+                }
+    
+    
+    
+             })
+
+         });
+        $('.varnt:checkbox:checked').each(function() {
+            var var_cont = $(this).closest('.variant');
+            var var_pri = var_cont.find('.price').val();
+            var v_id = var_cont.find('.price').data("id");
+
+           $.each(products[0].data.variants, function(i, v) {
+            
+               if(v.id == v_id)
+               {
+                products[0].data.variants[i].price = var_pri;
+               }
+    
+            })
+            
+
+        });
+
+
+         
+        
+        //console.log(products);
+
+
+
+        $.post("one-product/", {
+            
+            payload: JSON.stringify(products[0]),
+            collectionid:selectcollet
+
+          }, function(response) {
+
+           // console.log(response)
+            
+
+
+          },"json")
+          Swal.fire(
+            'Good job!',
+            'Product imported successfully!',
+            'success'
+          )
+
+          return false;
+
+
+
+
+
+      })
+      var multiproducts=[]
+      var searchedValues = []
+
+      $('#mbtn2').on('click', function() {
+        thisbtn = $(this);
+        var linkmulti = $.trim($('input[name=minput2]').val());
+		if (linkmulti.length<=0)
+		{
+		Swal.fire(
+              'Error occurred!',
+              'Store Link is empty!',
+              'error'
+            )
+			return false
+		}
+        thisbtn.prop('disabled', true);
+        thisbtn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> please wait this may take a few minutes')
+        $.get("multi-json/", {
+            linkmulti: linkmulti
+        }, function(response) {
+            //console.log(response)
+           // console.log(response.data.product,'ddddddddsssssssdddddd')
+            if(response.status != true)
+            {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: response.msg
+              })
+              }else{
+                //console.log(response.data.product)
+                $.each(response.data.product,function(idx,v){
+                  //console.log(v)
+                  $.each(v,function(i,p){
+                    multiproducts.push(p);
+                  })
+                })
+               // console.log(multiproducts)
+                //multiproducts = response.data.product.products;
+                searchedValues = multiproducts;
+                loadPDTList(searchedValues);
+                
+                
+                $('#MPmodal').modal('show');
+              
+        
+            }
+
+            
+
+             
+             
+
+
+
+        }).always(function(){
+            thisbtn.prop('disabled', false);
+            thisbtn.text('Import Products');
+        });
+
+        
+
+
+      })
+      $('body .Psearch').on('input',function(){
+        //console.log($(this).val())
+        var vilu = $(this).val().toLowerCase();
+        
+        searchedValues = multiproducts.filter(pdt => (vilu.length == 0 ? true : (pdt.title.toLowerCase().indexOf(vilu) >= 0)) );
+        //console.log(searchedValues);
+        
+        loadPDTList(searchedValues);
+        $('#selectAllCheckbox').closest('div').find('span').text($('.checkIT:checked').length);
+        $('.PProgress .totalpdt').text($('.checkIT:checked').length);
+       })
+
+
+
+      $("#selectAllCheckbox").on('change',function(){
+        const isChecked = $(this).is(':checked');
+        $('.checkIT').each(function(i, obj) {
+            $(obj).prop('checked', isChecked);
+            $(obj).trigger('change');
+        });
+        
+        
+        $('#selectAllCheckbox').closest('div').find('span').text($('.checkIT:checked').length);
+        $('.PProgress .totalpdt').text($('.checkIT:checked').length);
+        
+      })
+       
+       $('body').on('change','.checkIT',function(){
+        var is_checked = $(this).is(':checked');
+        var id = $(this).closest('li').find('img').data('id');
+        multiproducts = multiproducts.map(function(pdt){
+            var newpdt = pdt;
+            if(pdt.id === id)
+            {
+                //console.log(id)
+                newpdt.is_checked = is_checked;
+            }
+            return newpdt;
+        });
+        
+        
+        $('#selectAllCheckbox').closest('div').find('span').text($('.checkIT:checked').length);
+        $('.PProgress .totalpdt').text($('.checkIT:checked').length);
+
+       });
+
+       function loadPDTList(searchedValues = []){
+        $('#PR_Multi').html("")
+        $.each(searchedValues, function(i, v) {
+            //console.log(v.images[0].src)
+            $('#PR_Multi').append(`
+            <li class="list-group-item">
+             <div class="row" >
+             <div class="col-1">
+                <input class="form-check-input me-1 checkIT" ${(v.is_checked === true ? 'checked' : '')} type="checkbox" value="" aria-label="...">
+             </div>
+                <div class="col-1">
+                 <img class="w-100 P-img" data-id='${v.id}' src='${v.images[0].src}' ' />
+             </div>
+             <div class="col">
+               <h5> ${v.title}</h5>
+             </div>
+         </div>
+            </li>`);
+          });
+       }
+
+
+
+
+
+
+
+    
+
+       
+       $('#MPmodal').on('hide.bs.modal', function(e) {
+        
+        $('.PProgress span').text("0")
+       // console.log("clooosing");
+        
+       });
+
+
+       $('#MPmodal').on('hidden.bs.modal', function(e) {
+        $.post('/stop-process/',{},function(resp){
+         // console.log(resp);
+        });
+        $('.PProgress').hide()
+        $('#numselecto').html("<span>0</span> selected</label>");
+        $('#PR_Multi').html("");
+        $('#Psearch').val("");
+        $('#selectAllCheckbox').removeAttr('checked');
+        
+        multiproducts=[]
+        
+        
+      });
+
+   //$(window).beforeunload(function(e){
+   //  e.preventDefault();
+   //  e.returnValue = '';
+   //
+   //  console.log("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
+   //  console.log("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
+   //  console.log("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
+   //  console.log("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
+   //  console.log("sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss");
+   //});
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+//window.beforeunload = function (e) {
+//  return  $.post('/stop-process/',{},function(resp){
+//          console.log(resp);
+//        });
+//};
+$('body').click()
+$('div').click()
+//$('#helpInputTop').focus()
+//$("#Psearch").focus()
+
+window.addEventListener('beforeunload', (e) => {
+  e.preventDefault()
+  return   $.post('/stop-process/',{},function(resp){
+   // console.log(resp);
+ });
+
+
+})
+
+
+
+function getprogress() {
+  $.get('/read_progress/',{},function(resp){
+   // console.log(resp);
+    if(resp.progress)
+      $(".PProgress .importedpdt").text(resp.progress)
+ });
+}
+
+
+
+
+
+
+
+    });
+
+    
+  </script> 
+  {% endblock javascript %} 
+  
+  {% endblock %}
