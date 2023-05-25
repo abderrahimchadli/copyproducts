@@ -158,8 +158,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configure Shopify Application settings
 SHOPIFY_APP_NAME = 'CopYIT - Import Products'
-SHOPIFY_APP_API_KEY = "993fb793d5fd7b8c84a406bab814837f"
-SHOPIFY_APP_API_SECRET = "8df2336ca292faee496ae173086656f5"
+SHOPIFY_APP_API_KEY = ""
+SHOPIFY_APP_API_SECRET = ""
 SHOPIFY_APP_API_SCOPE = ['read_products','write_products','read_product_listings',]
 # Find API version to pin at https://help.shopify.com/en/api/versioning
 SHOPIFY_APP_API_VERSION = "2022-07"
